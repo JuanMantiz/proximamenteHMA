@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Moovearts</title>
+  
+  <!-- 1. IMPORTACIÓN DE FUENTES DESDE GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Cargamos Oswald (para títulos) y Darker Grotesque (para cuerpo) -->
+  <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;600&family=Oswald:wght@500;750&display=swap" rel="stylesheet">
+
+  <!-- 2. TAILWIND CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- 3. CONFIGURACIÓN DE LA PALETA DE COLORES Y JERARQUÍA TIPOGRÁFICA -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            hueso: '#F4F1ED',
+            azulOscuro: '#13263F',
+            violeta: '#8B7AA8',
+            coral: '#E88973',
+            terracota: '#C46A4A',
+          },
+          fontFamily: {
+            // Asignamos las familias tipográficas exactas de tu guía
+            oswald: ['Oswald', 'sans-serif'],
+            helvetica: ['Helvetica', 'Arial', 'sans-serif'],
+            darker: ['Darker Grotesque', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Animación líquida de fondo */
+    @keyframes gradientFluid {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .bg-fluid-art {
+      background: linear-gradient(-45deg, #13263F, #8B7AA8, #C46A4A, #13263F);
+      background-size: 400% 400%;
+      animation: gradientFluid 15s infinite ease-in-out;
+    }
+
+    /* Textura de grano analógico */
+    .film-grain {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Rotación para el diagrama geométrico abstracto */
+    @keyframes slowRotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    .animate-diagram {
+      animation: slowRotate 45s infinite linear;
+    }
+  </style>
+</head>
+<body class="bg-fluid-art text-hueso min-h-screen w-full flex flex-col justify-between items-center px-8 py-16 overflow-hidden relative font-helvetica antialiased select-none">
+
+  <!-- CAPA DE GRANO CINEMÁTICO -->
+  <div class="film-grain"></div>
+
+  <!-- DIAGRAMA GEOMÉTRICO ABSTRACTO EN EL FONDO -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-15 pointer-events-none z-0 animate-diagram hidden md:block">
+    <svg viewBox="0 0 300 300" class="w-full h-full stroke-hueso fill-none" stroke-width="0.5">
+      <circle cx="150" cy="110" r="65" stroke-dasharray="2 2" />
+      <circle cx="105" cy="180" r="65" />
+      <circle cx="195" cy="180" r="65" />
+      <line x1="150" y1="20" x2="150" y2="280" />
+      <line x1="20" y1="150" x2="280" y2="150" />
+    </svg>
+  </div>
+
+  <!-- ENCABEZADO -->
+  <header class="w-full max-w-5xl mx-auto flex justify-between items-center z-10">
+    <!-- Palabra de impacto usando la fuente OSWALD -->
+    <span class="font-oswald text-xs tracking-[0.4em] uppercase text-hueso/40">
+      Próximamente
+    </span>
+    <span class="font-helvetica text-[9px] tracking-[0.25em] uppercase text-coral/80 font-semibold border border-coral/30 px-3 py-1 bg-azulOscuro/30 backdrop-blur-sm">
+      Inscripciones Abiertas
+    </span>
+  </header>
+
+  <!-- CONTENIDO EDITORIAL CENTRAL (MATRIZ TIPOGRÁFICA) -->
+  <main class="relative z-10 flex flex-col items-center justify-center text-center max-w-4xl mx-auto my-auto w-full">
+    
+    <!-- Nombre de marca usando la fuente principal: HELVETICA con tracking amplio -->
+    <h1 class="font-helvetica text-3xl sm:text-5xl md:text-6xl font-normal tracking-[0.35em] uppercase text-white leading-none mb-8 w-full text-center pl-[0.35em]">
+      Human Moovearts
+    </h1>
+
+    <!-- Lema de marca usando la fuente secundaria: DARKER GROTESQUE en formato itálico y limpio -->
+    <p class="font-darker text-xl sm:text-3xl md:text-4xl font-light tracking-wide text-hueso/90 max-w-2xl italic leading-relaxed text-center w-full block">
+      "Quédate con nosotros porque aquí seguimos en movimiento"
+    </p>
+
+  </main>
+
+  <!-- PIE DE PÁGINA / CONTACTO -->
+  <footer class="w-full max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 z-10 border-t border-white/10 pt-8">
+    
+    <p class="font-helvetica text-[9px] tracking-[0.25em] text-hueso/30 uppercase">
+      © 2026 Human Moovearts.
+    </p>
+
+    <!-- Enlaces usando la tipografía institucional HELVETICA -->
+    <div class="font-helvetica flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] tracking-[0.2em] uppercase text-hueso/50">
+      <a href="https://www.instagram.com/human.moovearts?igsh=MzljcDVxaG9xNWk3" target="_blank" rel="noreferrer" class="hover:text-white hover:underline underline-offset-4 transition-all duration-300">
+        Instagram
+      </a>
+      <a href="https://www.tiktok.com/@human.moovearts?_r=1&_t=ZS-96E7wfVSqPw" target="_blank" rel="noreferrer" class="hover:text-white hover:underline underline-offset-4 transition-all duration-300">
+        TikTok
+      </a>
+      <a href="https://youtube.com/@human.moovearts?si=dveDpkFDTPyCuhj7" target="_blank" rel="noreferrer" class="hover:text-white hover:underline underline-offset-4 transition-all duration-300">
+        YouTube
+      </a>
+      <a href="mailto:mooveartshumanmoovearts@gmail.com" class="text-coral/80 hover:text-coral hover:underline underline-offset-4 transition-all duration-300 font-semibold">
+        Email
+      </a>
+    </div>
+    
+  </footer>
+
+</body>
+</html>
